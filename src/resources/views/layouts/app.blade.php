@@ -19,34 +19,15 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand navbar-dark bg-success text-white mb-5">
-            <a class="navbar-brand site-logo" href="{{ route('index')}}">Yanbaru Qiita</a>
-            @guest
+            <a class="navbar-brand site-logo">Yanbaru Qiita</a>
             <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                    <a class="nav-link">ログイン</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+                    <a class="nav-link">ユーザー登録</a>
                 </li>
             </ul>
-            @endguest
-
-            @auth
-            <ul class="navbar-nav ml-auto mr-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-2"></i>投稿する</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.show') }}">マイページ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:logout.submit()">ログアウト</a>
-                    <form action="{{ route('logout')}}" method="POST" name="logout">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
-            @endauth
         </nav>
 
         @yield('content')

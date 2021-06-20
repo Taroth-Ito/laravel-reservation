@@ -10,8 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// トップページ
-Route::get('/', 'ArticleController@index')->name('index');
-
+//認証系(ユーザー登録、ログイン、ログアウト)ルーティング
 Auth::routes();

@@ -20,6 +20,7 @@
     <div id="app">
         <nav class="navbar navbar-expand navbar-dark bg-success text-white mb-5">
             <a class="navbar-brand site-logo">Yanbaru Qiita</a>
+
             <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item">
                     <a class="nav-link">ログイン</a>
@@ -28,6 +29,7 @@
                     <a class="nav-link">ユーザー登録</a>
                 </li>
             </ul>
+
         </nav>
 
         @yield('content')

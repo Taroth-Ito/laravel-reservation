@@ -7,6 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="row">
+                // 共同開発時はDBから取得した記事データを一覧表示させてください
                 <div class="col-md-6">
                     <div class="card mb-5">
                         <div class="card-header d-flex justify-content-between align-items-center">

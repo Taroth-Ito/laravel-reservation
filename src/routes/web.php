@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// このルーティングはLaravelのウェルカムページを表示するためのものなので削除してください
 Route::get('/', function () {
     return view('welcome');
 });

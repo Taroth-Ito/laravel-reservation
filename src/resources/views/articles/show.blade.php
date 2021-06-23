@@ -45,11 +45,11 @@
                         <div class="row mb-2">
                             <p class="col-md-4 text-md-right">URL</p>
                             <p class="col-md-6">
-                                <a href="" target="_blank">https://www.yahoo.co.jp/</a>
+                                <a target="_blank">https://www.yahoo.co.jp/</a>
                             </p>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="" class='btn btn-secondary text-white col-md-3 py-2 mx-1 mb-4'>戻る</a>
+                            <a class='btn btn-secondary text-white col-md-3 py-2 mx-1 mb-4'>戻る</a>
                         </div>
                     </div>
                 </div>

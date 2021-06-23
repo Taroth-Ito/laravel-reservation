@@ -28,8 +28,8 @@
                             </p>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href="" class='btn btn-secondary text-white col-md-3 py-2 mx-1 mb-4'>戻る</a>
-                            <a href="" class="btn btn-success text-white col-md-3 py-2 mx-1 mb-4">編集</a>
+                            <a class='btn btn-secondary text-white col-md-3 py-2 mx-1 mb-4'>戻る</a>
+                            <a class="btn btn-success text-white col-md-3 py-2 mx-1 mb-4">編集</a>
                         </div>
                     </div>
                 </div>

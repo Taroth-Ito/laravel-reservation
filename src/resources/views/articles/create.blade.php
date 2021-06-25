@@ -18,18 +18,10 @@
                         <div class="form-group mb-4">
                             <label>記事タイトル<span class="text-danger">(※)</span></label>
                             <input class="form-control" id="title">
-                            <small id="url" class="form-text text-muted">30文字以内で入力してください。</small>
-                            
-                            {{-- エラー発生時フォーム↓ --}}
-                            {{-- <label for="title">記事タイトル<span class="text-danger">(※)</span></label>
-                            <input class="form-control is-invalid" id="title">
-                            <small id="url" class="form-text text-muted">30文字以内で入力してください。</small> --}}
-                            
-                            {{-- 記事タイトルについてのエラーメッセージ↓ --}}
-                                {{-- <span class="invalid-feedback" role="alert">
-                                    <strong>エラーメッセージ</strong>
-                                </span> --}}
-                            
+                            <small class="form-text text-muted">30文字以内で入力してください。</small>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>エラーメッセージ</strong>
+                            </span>                            
                         </div>
                         <div class="form-group mb-4">
                             <p>カテゴリー<span class="text-danger">(※)</span></p>
@@ -49,59 +41,25 @@
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">ラジオ4</label>
                                 </div>
-
-                                {{-- エラー発生時ボタン↓ --}}
-                                {{-- <div class="form-check form-check-inline is-invalid">
-                                    <input class="form-check-input is-invalid" type="radio">
-                                    <label class="form-check-label">ラジオ1</label>
-                                </div>                        
-                                <div class="form-check form-check-inline is-invalid">
-                                    <input class="form-check-input is-invalid" type="radio">
-                                    <label class="form-check-label">ラジオ2</label>
-                                </div>                        
-                                <div class="form-check form-check-inline is-invalid">
-                                    <input class="form-check-input is-invalid" type="radio">
-                                    <label class="form-check-label">ラジオ3</label>
-                                </div>                        
-                                <div class="form-check form-check-inline is-invalid">
-                                    <input class="form-check-input is-invalid" type="radio">
-                                    <label class="form-check-label">ラジオ4</label>
-                                </div> --}}
-
-                            {{-- カテゴリーについてのエラーメッセージ --}}
-                                {{-- <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong>エラーメッセージ</strong>
-                                </span> --}}
+                                </span>
                         </div>
                         <div class="form-group mb-4">
                             <label>記事概要<span class="text-danger">(※)</span></label>
-                            <textarea class="form-control" id="summary"rows="6">記事概要</textarea>
-                            <small id="url" class="form-text text-muted">30文字以上で入力してください。</small>
-
-                            {{-- エラー発生時フォーム↓ --}}
-                            {{-- <label>記事概要<span class="text-danger">(※)</span></label>
-                            <textarea class="form-control is-invalid" id="summary"rows="6">記事概要</textarea>
-                            <small id="url" class="form-text text-muted">30文字以上で入力してください。</small> --}}
-
-                            {{-- 記事概要についてのエラーメッセージ --}}
-                                {{-- <span class="invalid-feedback" role="alert">
-                                    <strong>エラーメッセージ</strong>
-                                </span> --}}
+                            <textarea class="form-control" id="summary" rows="6">記事概要</textarea>
+                            <small class="form-text text-muted">30文字以上で入力してください。</small>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>エラーメッセージ</strong>
+                            </span>
                         </div>
                         <div class="form-group mb-4">
                             <label>記事URL<span class="text-danger">(※)</span></label>
-                            <input class="form-control" id="url">
-                            <small id="url" class="form-text text-muted">Qiitaの記事のURLを入力してください。</small>
-
-                            {{-- エラー発生時フォーム↓ --}}
-                            {{-- <label>記事URL<span class="text-danger">(※)</span></label>
-                            <input class="form-control is-invalid" id="url">
-                            <small id="url" class="form-text text-muted">Qiitaの記事のURLを入力してください。</small> --}}
-
-                            {{-- 記事URLについてのエラーメッセージ --}}
-                                {{-- <span class="invalid-feedback" role="alert">
-                                    <strong>エラーメッセージ</strong>
-                                </span> --}}
+                            <input class="form-control">
+                            <small class="form-text text-muted">Qiitaの記事のURLを入力してください。</small>                            
+                            <span class="invalid-feedback" role="alert">
+                                <strong>エラーメッセージ</strong>
+                            </span>
                         </div>                        
                         <button class="btn btn-block btn-success col-md-4 mx-auto py-2 mt-5">
                             投稿する

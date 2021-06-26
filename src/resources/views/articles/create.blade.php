@@ -18,10 +18,7 @@
                         <div class="form-group mb-4">
                             <label>記事タイトル<span class="text-danger">(※)</span></label>
                             <input class="form-control" id="title">
-                            <small class="form-text text-muted">30文字以内で入力してください。</small>
-                            <span class="invalid-feedback" role="alert">
-                                <strong>エラーメッセージ</strong>
-                            </span>                            
+                            <small class="form-text text-muted">30文字以内で入力してください。</small>                           
                         </div>
                         <div class="form-group mb-4">
                             <p>カテゴリー<span class="text-danger">(※)</span></p>
@@ -41,25 +38,16 @@
                                     <input class="form-check-input" type="radio">
                                     <label class="form-check-label">ラジオ4</label>
                                 </div>
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>エラーメッセージ</strong>
-                                </span>
                         </div>
                         <div class="form-group mb-4">
                             <label>記事概要<span class="text-danger">(※)</span></label>
                             <textarea class="form-control" id="summary" rows="6">記事概要</textarea>
                             <small class="form-text text-muted">30文字以上で入力してください。</small>
-                            <span class="invalid-feedback" role="alert">
-                                <strong>エラーメッセージ</strong>
-                            </span>
                         </div>
                         <div class="form-group mb-4">
                             <label>記事URL<span class="text-danger">(※)</span></label>
                             <input class="form-control">
                             <small class="form-text text-muted">Qiitaの記事のURLを入力してください。</small>                            
-                            <span class="invalid-feedback" role="alert">
-                                <strong>エラーメッセージ</strong>
-                            </span>
                         </div>                        
                         <button class="btn btn-block btn-success col-md-4 mx-auto py-2 mt-5">
                             投稿する

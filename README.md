@@ -238,12 +238,12 @@ $ php artisan key:generate
 
 # 共同開発資料
 
-`development-document`ディレクトリに以下のファイルがありますのでそちらを確認いただきチームメンバーと協力して進めてください。
+## 画面提議書
 
-|資料名|説明|
-|:--:|:--|
-|ER図.drawio|DBのテーブル定義書です。<br>マイグレーションファイル、シーダーファイルを作成する時に参照ください。|
-|ER図.svg|ER図をブラウザで開けますのでこちらの方が見やすいです。|
-|画面遷移図.drawio|各画面の遷移図です。|
+以下のスプレッドシート（画面定義書）に画面遷移図、ER図、各画面の仕様書をまとめていますのでこちらを参照しながら開発を進めて下さい。<br>
 
-※ER図、画面遷移図は別途配布する**画面定義書（エクセルファイル）**にも載せております。
+https://docs.google.com/spreadsheets/d/1JgDfCq58ptT_GHOkA-uV2AVS2icB38zlHcqJYc8K4A0/edit?usp=sharing
+
+## 完成版アプリ
+
+https://yanbaru-qiita.herokuapp.com/

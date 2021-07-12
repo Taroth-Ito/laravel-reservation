@@ -146,9 +146,9 @@ Sequel Proを起動します。<br>
 |:--:|:--:|
 |名前|yanbaru-qiita|
 |ホスト|127.0.0.1|
-|ユーザー名|.envのDB_USER|
-|パスワード|.envのDB_PASSWORD|
-|データベース|空欄でOK|
+|ユーザー名|yanbaru_user|
+|パスワード|yanbaru_password|
+|データベース|yanbaru_db|
 |ポート|3306|
 
 接続の前に「お気に入りに追加」を押しておくと次回からすぐに接続できます。<br>

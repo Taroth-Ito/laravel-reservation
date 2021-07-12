@@ -7,7 +7,7 @@ services:
   web:
     image: nginx:1.18
     ports:
-      - ${WEB_PORT}:80
+      - 80:80
     depends_on:
       - app
     volumes:
@@ -19,22 +19,22 @@ services:
     volumes:
       - ./src/:/var/www/html
     environment:
-      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_CONNECTION=mysql
       - DB_HOST=db
       - DB_PORT=3306
-      - DB_DATABASE=${DB_DATABASE}
-      - DB_USERNAME=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=yanbaru_db
+      - DB_USERNAME=yanbaru_user
+      - DB_PASSWORD=yanbaru_password
 
   db:
     image: mysql:5.7
     ports:
-      - ${DB_PORT}:3306
+      - 3306:3306
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: yanbaru_db
+      MYSQL_USER: yanbaru_user
+      MYSQL_PASSWORD: yanbaru_password
+      MYSQL_ROOT_PASSWORD: root
       TZ: 'Asia/Tokyo'
     volumes:
       - mysql-volume:/var/lib/mysql

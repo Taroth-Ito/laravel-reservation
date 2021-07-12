@@ -1,11 +1,13 @@
-# 共同開発環境構築手順
-## はじめに
+# やんばるエキスパート 共同開発
+## 環境構築手順
 
-- 環境構築を楽に行うため、Docker、Docker Composeを使用します。
+- 環境構築の簡易化のため、`Docker`、`Docker Compose`を使用します。
 - OSはMac、Windowsどちらにも対応しています。（説明はMacベースですが、Windowsでの相違点は本文中に追記しています）
 - M1 Macにも対応しています。
 
-## 環境概要
+### 環境概要
+
+共同開発ではDockerで以下の構成（LEMP環境とも呼ばれます）の環境を構築します。
 
 |種類|名前|
 |:--:|:--:|
@@ -14,38 +16,34 @@
 |DBサーバー|MySQL|
 |アプリケーション|PHP|
 
-LEMP環境と呼ばれます。
-
-## Dockerでの環境構築
-
 ### Dockerをインストール
 
-こちらの記事を参考にしてください。<br>
+まだDockerをインストールしていない方はこちらの記事を参考にしてください。<br>
 
 - Mac：[DockerをMacにインストールする（更新: 2019/7/13）](https://qiita.com/kurkuru/items/127fa99ef5b2f0288b81)
 - Windows：[Windows 10 HomeへのDocker Desktop (ver 3.0.0) インストールが何事もなく簡単にできるようになっていた (2020.12時点)](https://qiita.com/zaki-lknr/items/db99909ba1eb27803456)
 
-ターミナルでバージョンを確認してそれぞれのバージョンが表示されたらDockerとDocker Composeが使えるようになっています。
+ターミナルで以下コマンドを実行し、それぞれのバージョンを確認して表示されたら`Docker`と`Docker Compose`が使えるようになっています。
 
 ```
 $ docker -v
 $ docker compose -v
 ```
 
-Dockerについてはこちらの記事を一読しておいてください。<br>
+※Dockerについてはこちらの記事を一読しておいてください。<br>
 [【図解】Dockerの全体像を理解する -前編-](https://qiita.com/etaroid/items/b1024c7d200a75b992fc)
 
 ### リポジトリをクローン
 
-以下コマンドでローカルクローンします。（クローンする場所はデスクトップでもユーザーディレクトリでも構いません）
+以下コマンドでこのリポジトリをローカルへクローンします。（クローンする場所はデスクトップでもユーザーディレクトリでも構いません）
+
+※ブランチ名は担当メンターから指示がありますので必ず指定してください。
 
 ```
 $ git clone -b ブランチ名（develop-****） https://github.com/shimotaroo/Yanbaru-Qiita-App.git
 ```
 
-※ブランチ名は担当メンターから指示がありますので必ず指定してください。
-
-`Yanbaru-Qiita-App`ディレクトリが作成されるのでその中に移動して正常にクローンされているか確認します。<br>
+cloneコマンドを実行したディレクトリに`Yanbaru-Qiita-App`ディレクトリが作成されるのでその中に移動して正常にクローンされているか確認します。<br>
 
 ※Macの場合
 ```
@@ -61,23 +59,6 @@ $ dir
 "Name"に下記があればOK
 README.md		development-document	docker			docker-compose.yml	src
 ```
-
-### .env作成
-`.env.example`をコピーして`.env`を作成。<br>
-
-以下の項目に任意の値を設定してください。<br>
-
-```:env
-DB_DATABASE=
-DB_USER=
-DB_PASSWORD=
-```
-
-なお、`.gitigonre`ファイルで`.env`をGit管理下から外しています。<br>
-（起こらないと思いますが、`.env`をGitHubにpushしないようにしてください）<br>
-
-参考：[docker-compose.ymlで.envファイルに定義した環境変数を使う](https://kitigai.hatenablog.com/entry/2019/05/08/003000)
-
 ### コンテナのポート番号の確認
 
 `web`コンテナ
@@ -105,11 +86,22 @@ DB_PASSWORD=
 （初めてDockerを使う方や他にDockerコンテナを起動させていない方は変更不要です）
 
 - web：88、8000、8888
-- db：3307、4306、5306、
+- db：3307、4306、5306
 
-## M1 Macの方の作業
+### DB（MySQL）の情報を変更
 
-M1版のDockerでは現在mysql:5.7のイメージが対応できていないので、以下の通り修正してください。
+デフォルトで`docker-compose.yml`（34〜37行目）でMySQLの情報を以下の通り設定しています。
+
+- データベース名：`yanbaru_db`
+- ユーザー名：`yanbaru_user`
+- パスワード：`yanbaru_password`
+- ルートユーザーのパスワード：`root`
+
+ここは各受講生、自由に決めていただいて問題ない情報ですが、環境構築を確実に進めるために今回は変更しないでください。
+
+### M1 Macの方の作業
+
+M1版のDockerでは現在`mysql:5.7`のイメージが使えないので、以下の通り修正してください。
 
 ```diff
 
@@ -118,25 +110,31 @@ M1版のDockerでは現在mysql:5.7のイメージが対応できていないの
 
 ```
 
+※修正した`docker-compose.yml`はコミット、プッシュしないようにしてください。
+
 ### ビルド&コンテナ起動
 
-`Yanbaru-Qiita-App`ディレクトリで以下のコマンドを実行してビルド＆コンテナ起動します。
+`Yanbaru-Qiita-App`ディレクトリで以下のコマンドを実行してイメージをビルド＆コンテナを起動します。
 
 ```
-$ docker compose up -d --build
+$ docker-compose up -d --build
 ```
 
 以下コマンドで3つのコンテナが起動（Up）しているのを確認できたらOKです。
 
 ```
-$ docker ps
+$ docker-compose ps
 ```
 
-これで環境構築は完了です。
+これで環境構築は完了です！お疲れ様でした！
 
-## DBと接続
+続けて以下の作業を進めてください！
 
-### Mac
+## DBとの接続
+
+- DBとの接続は基本的にCUI（ターミナルでコマンドポチポチ）ではなくGUIツールを使って行います。
+
+### Macの方（M1含む）
 
 [こちらの記事](https://qiita.com/miriwo/items/f24e6906105386ddfa83)を参考にMySQLのクライアントツール`Sequel Pro`をインストール。<br>
 
@@ -159,15 +157,14 @@ Sequel Proを起動します。<br>
 
 ※接続できない場合は各自調べてみてエラー解決に挑戦してみましょう。<br>
 
-### Windows
+### Windowsの方
 
 [Mk-2](https://qiita.com/miriwo/items/f24e6906105386ddfa83)などをインストールして使用してみてください。<br>
 Mk-2設定参考：procedure_Mk-2.pdf
 
 
-## Laravelの設定
+## Laravelアプリケーションの設定
 
-### 前提
 まずは以下の状態になっているか確認ください。
 
 - Dockerコンテナが3つ（web、db、app）が起動している
@@ -176,36 +173,32 @@ Mk-2設定参考：procedure_Mk-2.pdf
 Dockerコンテナの起動状態は以下コマンドから確認できます。
 
 ```
-$ docker ps
+$ docker-compose ps
 ```
 
 起動してない場合は以下コマンドで起動してください。
 
 ```
-$ docker compose up -d
+$ docker-compose up -d
 ```
 
 ### Laravel用の.env作成
 
-`src`ディレクトリに移動。<br>
+`src`ディレクトリに移動します。<br>
 ※`cd src`を実行するのでも、エディター上で移動するのでもどちらでも良いです。<br>
 
 既存の`.env.example`をコピーして`.env`を作成してください。（`.env.example`と`.env`が両方できる状態になります）<br>
 
-※srcディレクトリ直下に`.env`があればOKです。Docker環境用の`.env`とは別ファイルですのでご注意ください。
+※srcディレクトリ直下に`.env`があればOKです。
 
 ### パッケージのインストールとAPP_KEYの発行
 
 一度、`Yanbaru-Qiita-App`ディレクトリに戻り、以下のコマンドを実行してappコンテナの中に入ります。
 
-```
-$ docker compose exec app bash
-```
-
 Composerで必要なパッケージをインストールします。<br>
 
 ```
-$ composer install
+$ docker compose exec app composer install
 
 （略）
 Package manifest generated successfully.
@@ -216,34 +209,44 @@ Use the `composer fund` command to find out more!
 続けて以下のコマンドを実行
 
 ```
-$ php artisan key:generate
+$ docker compose exec app php artisan key:generate
 ```
 
 `.env`の`APP_KEY`に乱数が入ります。<br>
 
 このケースのようにDocker環境の場合、`php artisan`コマンドはappコンテナの中で実行しますので覚えておきましょう。
 
+※Docker環境ではLaravelの開発で使う`composer 〜`コマンドや`php artisan 〜`コマンドは上記の通り、
+
+```
+$ docker-compose exec app 〜
+```
+
+で実行します。
+
+※コマンド中の`app`は`docker-compose.yml`の17行目と対応しています
 
 ### Laravelのウェルカムページの表示
 
-`localhost:80`をブラウザに入力してLaravelのウェルカムページが表示されれば完了です！！<br>
+`localhost:80`をブラウザに入力してLaravelのウェルカムページが表示されれば完了です！<br>
 
 これで環境構築は完了です！これから共同開発を頑張っていきましょう！
 
-# 参考記事
+## 参考記事
 
 - [【導入編】絶対に失敗しないDockerでLaravel + Vue.jsの開発環境（LEMP環境）を構築する方法〜MacOS Intel Chip対応〜](https://yutaro-blog.net/2021/04/28/docker-laravel-vuejs-intel-1/)
 - [【前編】絶対に失敗しないDockerでLaravel + Vue.jsの開発環境（LEMP環境）を構築する方法〜MacOS Intel Chip対応〜](https://yutaro-blog.net/2021/04/28/docker-laravel-vuejs-intel-2/)
 - [【後編】絶対に失敗しないDockerでLaravel + Vue.jsの開発環境（LEMP環境）を構築する方法〜MacOS Intel Chip対応〜](https://yutaro-blog.net/2021/04/28/docker-laravel-vuejs-intel-3/)
 
-# 共同開発資料
+## 共同開発資料
 
-## 画面提議書
+### 画面定義書
 
-以下のスプレッドシート（画面定義書）に画面遷移図、ER図、各画面の仕様書をまとめていますのでこちらを参照しながら開発を進めて下さい。<br>
+共同開発に必要な情報は以下のスプレッドシートにまとめています。<br>
+都度確認しながら開発を進めてください。
 
 https://docs.google.com/spreadsheets/d/1JgDfCq58ptT_GHOkA-uV2AVS2icB38zlHcqJYc8K4A0/edit?usp=sharing
 
-## 完成版アプリ
+## 完成版アプリ（Herokuデプロイ済）
 
 https://yanbaru-qiita.herokuapp.com/

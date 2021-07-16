@@ -27,7 +27,7 @@
 
 ```
 $ docker -v
-$ docker compose -v
+$ docker-compose -v
 ```
 
 ※Dockerについてはこちらの記事を一読しておいてください。<br>

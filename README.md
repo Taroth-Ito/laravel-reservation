@@ -61,6 +61,8 @@ README.md		development-document	docker			docker-compose.yml	src
 ```
 ### コンテナのポート番号の確認
 
+以下、`docker-compose.yml`ファイルの抜粋です。
+
 `web`コンテナ
 
 ```yml：docker-compose.yml
@@ -71,7 +73,7 @@ README.md		development-document	docker			docker-compose.yml	src
     //略
 ```
 
-'db'コンテナ
+`db`コンテナ
 
 ```yml:docker-compose.yml
   db:
@@ -87,6 +89,8 @@ README.md		development-document	docker			docker-compose.yml	src
 
 - web：88、8000、8888
 - db：3307、4306、5306
+
+※万が一、変更する場合はVSCode上で変更してください。
 
 ### DB（MySQL）の情報を変更
 

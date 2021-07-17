@@ -92,7 +92,7 @@ README.md		development-document	docker			docker-compose.yml	src
 
 ※万が一、変更する場合はVSCode上で変更してください。
 
-### DB（MySQL）の情報を変更
+### DB（MySQL）の情報
 
 デフォルトで`docker-compose.yml`（34〜37行目）でMySQLの情報を以下の通り設定しています。
 

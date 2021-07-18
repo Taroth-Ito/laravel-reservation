@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 //認証系(ユーザー登録、ログイン、ログアウト)ルーティング
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
